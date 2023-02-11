@@ -48,22 +48,30 @@ class Deck():
                     
 class Judgement(Deck):
     def __init__(self, n_players):
-        super().__init__(suits=suits, ranks=ranks)
+        self.deck_state = super().__init__(suits=suits, ranks=ranks)
         self.n_players = n_players
         self.total_rounds = 52 // self.n_players
-        self.trumps = ranks + ["No Trump"]
+        self.trumps = suits + ["No Trump"]
 
-    def deal(self, round = 1):
-        Judgement.shuffle_deck()
+    def deal(self, round):
         self.round = round
         self.trump_state = self.trumps[(self.round - 1) % 5]
-        
+        self.cards_dealt = 52 // self.n_players - (self.n_players * (round - 1))
+
         #index slicing for dealing
+        self.hand_dist = np.empty(self.n_players)
+        for n in range(self.n_players):
+            self.hand_dist = np.append(self.hand_dist, self.order[:self.n_players], axis=0)
+            self.order = self.order[self.n_players:]
+
+        return self.hand_dist
         
 
+         
+
         
 
 
-Judgement()
+
 
 
