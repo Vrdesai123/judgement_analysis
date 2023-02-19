@@ -12,7 +12,6 @@ This application aims to provide a simulator to play Judgement and provide a ful
 - Game trees to calculate expected hands won for each card
 
 ## Current considerations
-- Create proper project structure which allows the testing files to read the src module and will allow to scale up to being a GUI application
 - Create docker image/ conda dependencies list
 - Creating a shell GUI which will scale to have more buttons available
 - Continue creating the game logic such as defining user guesses and creating turn logic for and tracking player wins and scores
