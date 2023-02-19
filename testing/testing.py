@@ -1,6 +1,7 @@
 import unittest
 import logging
 import sys
+from src import card
 from src.game_logic import Deck
 
 class SomeTest(unittest.TestCase):

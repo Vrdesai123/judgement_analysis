@@ -44,11 +44,10 @@ class Deck:
                 self.order.append(Card(rk, st))
 
         random.shuffle(self.order)
-        
 
     def shuffle_deck(self):
         """
-        desc: shuffles the deck order prvided with a list shuffle
+        desc: shuffles the deck order provided with a list shuffle
         """
         random.shuffle(self.order)
     
@@ -86,7 +85,7 @@ class Deck:
             self.order = self.order[self.cards_dealt:]
 
         # not ideal, should append with correct dimensionality
-        self.hand_dist = self.hand_dist.reshape(self.n_players, self.cards_dealt)
+        self.hand_dist = self.hand_dist.reshape(self.n_players,self.cards_dealt)
         return self.hand_dist
 
     def translate_cards(self):
@@ -111,11 +110,9 @@ class Judgement(Deck):
         - deal() -> np.array
 
         """
-        
-        super().__init__(suits=suits, ranks=ranks)
+        self.deck_state = super().__init__(suits=suits, ranks=ranks)
         self.n_players = n_players
         self.total_rounds = 52 // self.n_players
-        self.round = 1
         self.trumps = suits + ["No Trump"]
         self.trump_state = self.trumps[(self.round - 1) % 5]
 

@@ -1,10 +1,10 @@
-import setuptools
+from setuptools import setup, find_packages
 
-setuptools.setup(
-    name="app",
-    version="1.0",
-    packages=['src', 'testing'],
-    entry_points={
-        'console_scripts': ['app=src.main', ]
-    },
+setup(
+    name='judgement_analysis',
+    version='0.1',
+    packages=find_packages(),
+    install_requires=[
+        # any required packages should be listed here
+    ]
 )
