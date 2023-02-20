@@ -2,6 +2,9 @@
 
 This application aims to provide a simulator to play Judgement and provide a full breakdown of an optimal way to play the game. A GUI with buttons will be present to start the game and execute actions as each player, a chart of best plays will be available.
 
+## Key setup
+- using your command terminal run the following command in the terminal: <code>pip install .</code>
+
 ## Graphical feature list
 - GUI with list of cards in hand and already played with game state information
 - Buttons which allow you to play a card
