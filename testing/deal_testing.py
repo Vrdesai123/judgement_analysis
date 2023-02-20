@@ -1,18 +1,18 @@
 import unittest
 import logging
 import sys
-from src.game_logic import Deck
+from src.game_logic import Judgement
 
-class SomeTest(unittest.TestCase):
+class Deal_Checker(unittest.TestCase):
     # change name of these unittests to reflect utility
     def testSomething(self):
-        Deck_state = Deck()
-        dealt_list = Deck_state.deal(3,10)
-        log = logging.getLogger("SomeTest.testSomething")
+        Game = Judgement(2)
+        dealt_list = Game.assign_player_hands()
+        log = logging.getLogger("Deal_Checker.testSomething")
         log.debug("Shuffled list %r", dealt_list)
-        log.debug("total cards dealt = %r", dealt_list.size)
+
         
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stderr)
-    logging.getLogger("SomeTest.testSomething").setLevel(logging.DEBUG)
+    logging.getLogger("Deal_Checker.testSomething").setLevel(logging.DEBUG)
     unittest.main()       

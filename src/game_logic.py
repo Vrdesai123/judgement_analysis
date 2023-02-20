@@ -1,6 +1,9 @@
 import numpy as np
 import random 
+import string
 import sys
+import pandas as pd
+
 from src.card import Card
 
 
@@ -86,14 +89,14 @@ class Deck:
             self.order = self.order[self.cards_dealt:]
 
         # not ideal, should append with correct dimensionality
-        self.hand_dist = self.hand_dist.reshape(self.n_players, self.cards_dealt)
+        self.hand_dist = self.hand_dist.reshape(self.cards_dealt, self.n_players)
         return self.hand_dist
 
-    def translate_cards(self):
+    def translate_cards(self, card_list):
         """
         desc: transforms card object to a more readable format, may deprecate soon
         """
-        return [i.card_name for i in self.hand_dist]
+        return [i.card_name for i in card_list]
         
     
 
@@ -117,10 +120,34 @@ class Judgement(Deck):
         self.n_players = n_players
         self.total_rounds = 52 // self.n_players
         self.trumps = suits + ["No Trump"]
+        self.player_names = [''.join(random.choices(string.ascii_lowercase, k=5)) \
+            for n in range(self.n_players)]
+        self.hand_dist = None
 
         # game state information
         self.round = 1
+        self.turn = 1
         self.trump_state = self.trumps[(self.round - 1) % 5]
+
+    def assign_player_hands(self):
+            self.hand_dist = self.deal(self.n_players)
+            self.player_hands = pd.DataFrame(data = self.hand_dist, columns = self.player_names)
+            return self.player_hands
+    
+    def take_turn(self):
+        """
+        Take an input from each player and save the card they played, pass it to an evaluator function
+        and count up the turn by 1 
+        """
+        for player in self.player_names:
+            print(self.translate_cards(self.player_hands[player]))
+
+            
+
+    def turn_evaluator(self):
+        self.turn += 1
+
+        
 
     
 
@@ -128,6 +155,6 @@ class Judgement(Deck):
 
         
 
-
+ 
 
 
