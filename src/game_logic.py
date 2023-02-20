@@ -48,7 +48,7 @@ class Deck:
 
     def shuffle_deck(self):
         """
-        desc: shuffles the deck order prvided with a list shuffle
+        desc: shuffles the deck order provided with a list shuffle
         """
         random.shuffle(self.order)
     
@@ -112,11 +112,14 @@ class Judgement(Deck):
 
         """
         
+        # game information
         super().__init__(suits=suits, ranks=ranks)
         self.n_players = n_players
         self.total_rounds = 52 // self.n_players
-        self.round = 1
         self.trumps = suits + ["No Trump"]
+
+        # game state information
+        self.round = 1
         self.trump_state = self.trumps[(self.round - 1) % 5]
 
     
