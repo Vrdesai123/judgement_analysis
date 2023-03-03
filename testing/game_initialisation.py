@@ -11,6 +11,9 @@ class Deal_Checker(unittest.TestCase):
         log = logging.getLogger("Deal_Checker.testSomething")
         log.debug("Shuffled list %r", dealt_list)
 
+    # create follow up tests for assigning and guessing tricks
+    
+
         
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stderr)
