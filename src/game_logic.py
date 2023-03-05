@@ -32,6 +32,7 @@ class Judgement(Deck):
         self.hand_dist = None
 
         # game state information
+        # self.current_turn_order = 
         self.round = 1
         self.turn = 1
         self.trump_state = self.trumps[(self.round - 1) % 5]
@@ -49,7 +50,7 @@ class Judgement(Deck):
         self.player_tricks = []
 
         for player in self.player_names:
-            print("Guess the number of tricks you will win")
+            print(f"{player}: guess the number of tricks you will win")
             print(self.translate_cards(self.player_hands[player]))
             while True:
                     try:
@@ -70,9 +71,11 @@ class Judgement(Deck):
                             raise ValueError
                         break
                     except:
-                        print("choose a valid guess ")
-            self.player_tricks.append()
-            
+                        print("make a valid guess ")
+            self.player_tricks.append(choice)
+        
+        self.player_tricks = pd.DataFrame(data=self.player_tricks, columns=self.player_names)
+        # find max guess
     
     def take_turn(self):
         """
@@ -83,6 +86,7 @@ class Judgement(Deck):
         self.played = []
 
         for player in self.player_names:
+            print("")
             print(self.translate_cards(self.player_hands[player]))
             print([i for i in range(len(self.player_hands[player]))])
             
