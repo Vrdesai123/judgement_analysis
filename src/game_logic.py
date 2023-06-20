@@ -1,3 +1,5 @@
+# This file contains the code required for the game logic of the game of judgement
+
 import numpy as np
 import random 
 import string

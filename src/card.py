@@ -1,3 +1,5 @@
+# Purpose: Defines the Card class which is used to create each individual card in the deck
+
 class Card:
 
     def __init__(self, rank: int, suit: str):
